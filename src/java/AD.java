@@ -2,7 +2,7 @@ public class AD {
     public double _value;
     public double _deriv;
 
-    public static int EXPONENT = 3;
+    public static int EXPONENT = 4;
     
     public AD(double value, double deriv) {
         _value = value;
