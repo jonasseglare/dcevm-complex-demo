@@ -20,4 +20,8 @@ public class AD {
         }
         return result;
     }
+
+    public String toString() {
+        return "AD(value=" + _value + ", deriv=" + _deriv + ")";
+    }
 }
