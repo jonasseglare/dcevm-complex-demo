@@ -1,10 +1,37 @@
 # dcevm-complex-demo
 
-A Clojure library designed to ... well, that part is up to you.
+Investigate HotswapAgent loading issues.
 
 ## Usage
 
-FIXME
+To demonstrate the issue, launch a REPL.
+
+Evaluate this code:
+```
+dcevm-complex-demo.ad> (raise-to-power (variable 3.0))
+```
+and see the result:
+```
+#object[AD 0x45e16b0b "AD(value=27.0, deriv=27.0)"]
+```
+Then change some line in `src/java/AD.java`, e.g. from `public static int EXPONENT = 4;` to `public static int EXPONENT = 3;`. And compile with `lein javac`.
+
+You will see a messgae lit this:
+```
+HOTSWAP AGENT: 10:00:21.894 RELOAD (org.hotswap.agent.config.PluginManager) - Reloading classes [AD] (autoHotswap)
+```
+which indicates that the class AD was reloaded.
+
+Try to evaluate the above line again:
+```
+dcevm-complex-demo.ad> (raise-to-power (variable 3.0))
+```
+and we get this error:
+``` 
+Execution error (LinkageError) at dcevm-complex-demo.ad/raise-to-power (ad.clj:10).
+loader constraint violation: when resolving method 'AD AD.raiseToPower()' the class loader clojure.lang.DynamicClassLoader @e7685af of the current class, dcevm_complex_demo/ad$raise_to_power, and the class loader 'app' for the method's defining class, AD, have different Class objects for the type AD used in the signature (dcevm_complex_demo.ad$raise_to_power is in unnamed module of loader clojure.lang.DynamicClassLoader @e7685af, parent loader clojure.lang.DynamicClassLoader @c8e92fa; AD is in unnamed module of loader 'app')
+dcevm-complex-demo.ad> 
+```
 
 ## License
 
