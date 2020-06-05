@@ -55,6 +55,9 @@ dcevm-complex-demo.ad=> (raise-to-power (variable 3.0))
 Execution error (LinkageError) at dcevm-complex-demo.ad/raise-to-power (ad.clj:10).
 loader constraint violation: when resolving method 'AD AD.raiseToPower()' the class loader clojure.lang.DynamicClassLoader @7c891ba7 of the current class, dcevm_complex_demo/ad$raise_to_power, and the class loader 'app' for the method's defining class, AD, have different Class objects for the type AD used in the signature (dcevm_complex_demo.ad$raise_to_power is in unnamed module of loader clojure.lang.DynamicClassLoader @7c891ba7, parent loader clojure.lang.DynamicClassLoader @5b84f14; AD is in unnamed module of loader 'app')
 ```
+However, sometimes (maybe due to some dirty state), it prints out the value we got before, e.g. `AD(value=81.0, deriv=108.0)`, meaning that it dit *not* use the new value of `EXPONENT`. I haven't understood when this happens.
+
+The correct output that we would expect, in any case, is `AD(value=27.0, deriv=27.0)`.
 
 ## License
 
