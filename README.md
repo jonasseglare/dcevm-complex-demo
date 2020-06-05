@@ -11,7 +11,9 @@ Investigate HotswapAgent loading issues.
 
 ### Reproducing the problem
 
-Open a terminal from the root folder of this project and type `lein repl`. In the repl, type `(raise-to-power (variable 3.0))`. You will see something like:
+Open a terminal from the root folder of this project and type `lein clean` to clean up the project.
+
+The launch a repl with `lein repl`. In the repl, type `(raise-to-power (variable 3.0))`. You will see something like:
 ```
 jonas@jonas-ThinkPad-W530:~/prog/clojure/dcevm-complex-demo$ lein repl
 HOTSWAP AGENT: 11:16:16.436 INFO (org.hotswap.agent.HotswapAgent) - Loading Hotswap agent {1.4.0} - unlimited runtime class redefinition.

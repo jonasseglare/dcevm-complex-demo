@@ -7,8 +7,13 @@
   :source-paths ["src/clj"]
   :java-source-paths ["src/java"]
 
-  ;; Edit this path for your system or comment it out
-  ;; if you are already using DCEVM systemwide
-  :java-cmd "/home/jonas/local/dcevm-11.0.7+1/bin/java"
+  :profiles {:repl {
+                    
+                    ;; Edit this path for your system or comment it out
+                    ;; if you are already using DCEVM systemwide
+                    :java-cmd "/home/jonas/local/dcevm-11.0.7+1/bin/java"
+                    
+                    }}
+  
 
   :repl-options {:init-ns dcevm-complex-demo.ad})
