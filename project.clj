@@ -6,4 +6,4 @@
   :dependencies [[org.clojure/clojure "1.10.1"]]
   :source-paths ["src/clj"]
   :java-source-paths ["src/java"]
-  :repl-options {:init-ns dcevm-complex-demo.core})
+  :repl-options {:init-ns dcevm-complex-demo.ad})
